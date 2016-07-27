@@ -175,7 +175,7 @@ class TestPyramid(unittest.TestCase):
     self.assertIsInstance(self.pyramid, Shape)
     self.assertIsInstance(self.pyramid.base, Rectangular)
 
-  def test_pyramid_height_default_zero(self):
+  def test_cuboid_height_default_zero(self):
     self.assertEqual(pyramid.height, 0)
 
   def test_pyramid_volume_default_zero(self):
@@ -201,11 +201,33 @@ class TestCuboid(unittest.TestCase):
 
   @classmethod
   def setUpClass(self):
-    self.cuboid = Cuboid()
+    self.cube = Cube()
 
-  def test_cuboid_is_shape_and_quadrilateral(self):
-    self.assertIsInstance(self.cuboid, Shape)
-    self.assertIsInstance(self.cuboid, Rectangular)
+  def test_cube_is_shape_and_has_rectangular(self):
+    self.assertIsInstance(self.cube, Shape)
+    self.assertIsInstance(self.cube.base, Rectangular)
+
+  def test_cube_depth_default_zero(self):
+    self.assertEqual(cube.depth, 0)
+
+  def test_cube_volume_default_zero(self):
+    self.assertEqual(cube.volume, 0)
+
+  def test_cube_base_inherits_rectangular_properties(self):
+    self.assertIsInstance(self.cube.base.sides, list)
+    self.assertEqual(self.cube.base.sides, [])
+
+  def test_set_cube_dimensions(self):
+    cube = Cube()
+    cube.set_dimensions(4)
+    self.assertEqual(cube.depth, 4)
+    self.assertEqual(cube.base.sides, [4, 4])
+
+  def test_calculate_cube_volume(self):
+    cube = Cube()
+    cube.set_dimensions(4)
+    cube.calc_volume()
+    self.assertEqual(cube.volume, 48)
 
 
 if __name__ == '__main__':

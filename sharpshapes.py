@@ -28,7 +28,7 @@ class Pyramid(Trilateral):
   def __init__(self):
     pass
 
-class Cuboid(Rectangular):
+class Cube(Rectangular):
 
   def __init__(self):
     pass
