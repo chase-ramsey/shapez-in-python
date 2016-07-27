@@ -132,30 +132,30 @@ class TestCylinder(unittest.TestCase):
   def setUpClass(self):
     self.cylinder = Cylinder()
 
-  def test_cylinder_is_shape_and_circular(self):
+  def test_cylinder_is_shape_and_has_circular(self):
     self.assertIsInstance(self.cylinder, Shape)
-    self.assertIsInstance(self.cylinder, Circular)
+    self.assertIsInstance(self.cylinder.base, Circular)
 
   def test_cylinder_inherits_shape_properties(self):
-    self.assertEqual(cylinder.area, 0)
+    self.assertEqual(self.cylinder.area, 0)
 
-  def test_cylinder_inherits_circular_properties(self):
-    self.assertEqual(cylinder.radius, 0)
-    self.assertEqual(cylinder.diameter, 0)
-    self.assertEqual(cylinder.circumference, 0)
+  def test_cylinder_base_inherits_circular_properties(self):
+    self.assertEqual(self.cylinder.base.radius, 0)
+    self.assertEqual(self.cylinder.base.diameter, 0)
+    self.assertEqual(self.cylinder.base.circumference, 0)
 
   def test_cylinder_height_default_zero(self):
-    self.assertEqual(cylinder.height, 0)
+    self.assertEqual(self.cylinder.height, 0)
 
   def test_cylinder_volume_default_zero(self):
-    self.assertEqual(cylinder.volume, 0)
+    self.assertEqual(self.cylinder.volume, 0)
 
   def test_set_cylinder_dimensions(self):
     cylinder = Cylinder()
     cylinder.set_dimensions(5, 10)
-    self.assertEqual(cylinder.radius, 5)
-    self.assertEqual(cylinder.diameter, 10)
-    self.assertEqual(cylinder.circumference, 31.14)
+    self.assertEqual(cylinder.base.radius, 5)
+    self.assertEqual(cylinder.base.diameter, 10)
+    self.assertEqual(cylinder.base.circumference, 31.14)
     self.assertEqual(cylinder.height, 10)
 
   def test_calculate_cylinder_volume(self):
@@ -171,9 +171,19 @@ class TestPyramid(unittest.TestCase):
   def setUpClass(self):
     self.pyramid = Pyramid()
 
-  def test_pyramid_is_shape_and_trilateral(self):
+  def test_pyramid_is_shape_and_has_rectangular(self):
     self.assertIsInstance(self.pyramid, Shape)
-    self.assertIsInstance(self.pyramid, Trilateral)
+    self.assertIsInstance(self.pyramid.base, Rectangular)
+
+  def test_pyramid_height_default_zero(self):
+    self.assertEqual(pyramid.height, 0)
+
+  def test_pyramid_volume_default_zero(self):
+    self.assertEqual(pyramid.volume, 0)
+
+  def test_pyramid_base_inherits_rectangular_properties(self):
+    self.assertIsInstance(self.pyramid.base.sides, list)
+    self.assertEqual(self.pyramid.base.sides, [])
 
 class TestCuboid(unittest.TestCase):
 
