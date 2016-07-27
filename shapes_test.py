@@ -94,7 +94,37 @@ class TestTrilateral(unittest.TestCase):
     self.assertEqual(tri.area, 6)
 
 class TestQuadrilateral(unittest.TestCase):
-  pass
+
+  @classmethod
+  def setUpClass(self):
+    self.rectangular = Rectangular()
+
+  def test_rectangular_is_instance_shape(self):
+    self.assertIsInstance(self.rectangular, Shape)
+
+  def test_rectangular_has_area_default_zero(self):
+    self.assertEqual(self.rectangular.area, 0)
+
+  def test_rectangular_sides_empty_list_default(self):
+    self.assertIsInstance(self.rectangular.sides, list)
+    self.assertEqual(self.rectangular.sides, [])
+
+  def test_rectangular_set_dimensions(self):
+    rect = Rectangular()
+    rect.set_dimensions(4, 4, 4, 4)
+    rect.sides = [4, 4, 4, 4]
+
+  def test_calculate_perimeter_rectangle(self):
+    rect = Rectangular()
+    rect.set_dimensions(4, 4, 4, 4)
+    rect.calc_perimeter()
+    self.assertEqual(rect.perimeter, 16)
+
+  def test_calculate_area_rectangle(self):
+    rect = Rectangular()
+    rect.set_dimensions(4, 4, 4, 4)
+    rect.calc_area()
+    self.assertEqual(rect.area, 16)
 
 
 if __name__ == '__main__':
