@@ -111,18 +111,18 @@ class TestRectangular(unittest.TestCase):
 
   def test_rectangular_set_dimensions(self):
     rect = Rectangular()
-    rect.set_dimensions(4, 4, 4, 4)
-    rect.sides = [4, 4, 4, 4]
+    rect.set_dimensions(4, 4)
+    rect.sides = [4, 4]
 
   def test_calculate_perimeter_rectangle(self):
     rect = Rectangular()
-    rect.set_dimensions(4, 4, 4, 4)
+    rect.set_dimensions(4, 4)
     rect.calc_perimeter()
     self.assertEqual(rect.perimeter, 16)
 
   def test_calculate_area_rectangle(self):
     rect = Rectangular()
-    rect.set_dimensions(4, 4, 4, 4)
+    rect.set_dimensions(4, 4)
     rect.calc_area()
     self.assertEqual(rect.area, 16)
 
@@ -135,6 +135,35 @@ class TestCylinder(unittest.TestCase):
   def test_cylinder_is_shape_and_circular(self):
     self.assertIsInstance(self.cylinder, Shape)
     self.assertIsInstance(self.cylinder, Circular)
+
+  def test_cylinder_inherits_shape_properties(self):
+    self.assertEqual(cylinder.area, 0)
+
+  def test_cylinder_inherits_circular_properties(self):
+    self.assertEqual(cylinder.radius, 0)
+    self.assertEqual(cylinder.diameter, 0)
+    self.assertEqual(cylinder.circumference, 0)
+
+  def test_cylinder_height_default_zero(self):
+    self.assertEqual(cylinder.height, 0)
+
+  def test_cylinder_volume_default_zero(self):
+    self.assertEqual(cylinder.volume, 0)
+
+  def test_set_cylinder_dimensions(self):
+    cylinder = Cylinder()
+    cylinder.set_dimensions(5, 10)
+    self.assertEqual(cylinder.radius, 5)
+    self.assertEqual(cylinder.diameter, 10)
+    self.assertEqual(cylinder.circumference, 31.14)
+    self.assertEqual(cylinder.height, 10)
+
+  def test_calculate_cylinder_volume(self):
+    cylinder = Cylinder()
+    cylinder.set_dimensions(5, 10)
+    cylinder.calc_volume()
+    self.assertEqual(cylinder.volume, 785.38)
+
 
 class TestPyramid(unittest.TestCase):
 
