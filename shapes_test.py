@@ -31,7 +31,22 @@ class TestCircular(unittest.TestCase):
   def test_circumference_zero_default(self):
     self.assertEqual(self.circular.circumference, 0)
 
-  def test_set_dimensions(self):
+  def test_set_radius(self):
+    circle_shape = Circular()
+    circle_shape.set_radius(5)
+    self.assertEqual(circle_shape.radius, 5)
+
+  def test_set_diameter(self):
+    circle_shape = Circular()
+    circle_shape.set_diameter(5)
+    self.assertEqual(circle_shape.diameter, 5)
+
+  def test_set_circumference(self):
+    circle_shape = Circular()
+    circle_shape.set_circumference(5)
+    self.assertEqual(circle_shape.circumference, 5)
+
+  def test_circular_set_dimensions(self):
     circle_shape = Circular()
     circle_shape.set_dimensions(5)
     self.assertEqual(circle_shape.radius, 5)
@@ -46,7 +61,37 @@ class TestCircular(unittest.TestCase):
 
 
 class TestTrilateral(unittest.TestCase):
-  pass
+
+  @classmethod
+  def setUpClass(self):
+    self.trilateral = Trilateral()
+
+  def test_trilateral_is_instance_shape(self):
+    self.assertIsInstance(self.trilateral, Shape)
+
+  def test_trilateral_has_area_default_zero(self):
+    self.assertEqual(self.trilateral.area, 0)
+
+  def test_trilateral_sides_empty_list_default(self):
+    self.assertIsInstance(self.trilateral.sides, list)
+    self.assertEqual(self.trilateral.sides, [])
+
+  def test_trilateral_set_dimensions(self):
+    tri = Trilateral()
+    tri.set_dimensions(3, 4, 5)
+    tri.sides = [3, 4, 5]
+
+  def test_calculate_perimeter_triangle(self):
+    tri = Trilateral()
+    tri.set_dimensions(3, 4, 5)
+    tri.calc_perimeter()
+    self.assertEqual(tri.perimeter, 12)
+
+  def test_calculate_area_triangle(self):
+    tri = Trilateral()
+    tri.set_dimensions(3, 4, 5)
+    tri.calc_area()
+    self.assertEqual(tri.area, 6)
 
 class TestQuadrilateral(unittest.TestCase):
   pass
