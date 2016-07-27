@@ -1,7 +1,7 @@
 class Shape:
 
   def __init__(self):
-    pass
+    self.area = 0
 
 class Circular(Shape):
 
