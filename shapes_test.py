@@ -126,6 +126,24 @@ class TestQuadrilateral(unittest.TestCase):
     rect.calc_area()
     self.assertEqual(rect.area, 16)
 
+class TestCylinder(unittest.TestCase):
+
+  @classmethod
+  def setUpClass(self):
+    self.cylinder = Cylinder()
+
+class TestPyramid(unittest.TestCase):
+
+  @classmethod
+  def setUpClass(self):
+    self.pyramid = Pyramid()
+
+class TestCuboid(unittest.TestCase):
+
+  @classmethod
+  def setUpClass(self):
+    self.cuboid = Cuboid()
+
 
 if __name__ == '__main__':
   unittest.main()
