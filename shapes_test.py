@@ -1,4 +1,5 @@
 import unittest
+from sharpshapes import *
 
 class TestCircular(unittest.TestCase):
   pass
