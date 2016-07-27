@@ -93,7 +93,7 @@ class TestTrilateral(unittest.TestCase):
     tri.calc_area()
     self.assertEqual(tri.area, 6)
 
-class TestQuadrilateral(unittest.TestCase):
+class TestRectangular(unittest.TestCase):
 
   @classmethod
   def setUpClass(self):
@@ -132,17 +132,29 @@ class TestCylinder(unittest.TestCase):
   def setUpClass(self):
     self.cylinder = Cylinder()
 
+  def test_cylinder_is_shape_and_circular(self):
+    self.assertIsInstance(self.cylinder, Shape)
+    self.assertIsInstance(self.cylinder, Circular)
+
 class TestPyramid(unittest.TestCase):
 
   @classmethod
   def setUpClass(self):
     self.pyramid = Pyramid()
 
+  def test_pyramid_is_shape_and_trilateral(self):
+    self.assertIsInstance(self.pyramid, Shape)
+    self.assertIsInstance(self.pyramid, Trilateral)
+
 class TestCuboid(unittest.TestCase):
 
   @classmethod
   def setUpClass(self):
     self.cuboid = Cuboid()
+
+  def test_cuboid_is_shape_and_quadrilateral(self):
+    self.assertIsInstance(self.cuboid, Shape)
+    self.assertIsInstance(self.cuboid, Rectangular)
 
 
 if __name__ == '__main__':

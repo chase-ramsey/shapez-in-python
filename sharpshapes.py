@@ -13,7 +13,7 @@ class Trilateral(Shape):
   def __init__(self):
     pass
 
-class Quadrilateral(Shape):
+class Rectangular(Shape):
 
   def __init__(self):
     pass
@@ -28,7 +28,7 @@ class Pyramid(Trilateral):
   def __init__(self):
     pass
 
-class Cuboid(Quadrilateral):
+class Cuboid(Rectangular):
 
   def __init__(self):
     pass
