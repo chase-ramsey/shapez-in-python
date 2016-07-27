@@ -185,6 +185,18 @@ class TestPyramid(unittest.TestCase):
     self.assertIsInstance(self.pyramid.base.sides, list)
     self.assertEqual(self.pyramid.base.sides, [])
 
+  def test_set_pyramid_dimensions(self):
+    pyramid = Pyramid()
+    pyramid.set_dimensions(4, 5)
+    self.assertEqual(pyramid.base.sides, [4, 4])
+    self.assertEqual(pyramid.height, 5)
+
+  def test_calculate_pyramid_volume(self):
+    pyramid = Pyramid()
+    pyramid.set_dimensions(4, 5)
+    pyramid.calc_volume()
+    self.assertEqual(pyramid.volume, 26.67)
+
 class TestCuboid(unittest.TestCase):
 
   @classmethod
