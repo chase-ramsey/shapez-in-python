@@ -93,7 +93,18 @@ class Pyramid():
     volume = format((a * b * c) / 3, '.2f')
     self.volume = float(volume)
 
-class Cube(Rectangular):
+class Cube():
 
   def __init__(self):
-    pass
+    self.base = Rectangular()
+    self.depth = 0
+    self.volume = 0
+
+  def set_dimensions(self, val):
+    self.base.sides.extend([val, val])
+    self.depth = val
+
+  def calc_volume(self):
+    a, b, c = self.base.sides[0], self.base.sides[1], self.depth
+    self.volume = a * b * c
+

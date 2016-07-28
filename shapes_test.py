@@ -72,9 +72,6 @@ class TestTrilateral(unittest.TestCase):
   def test_trilateral_has_area_default_zero(self):
     self.assertEqual(self.trilateral.area, 0)
 
-  def test_trilateral_has_perimeter_default_zero(self):
-    self.assertEqual(self.trilateral.perimeter, 0)
-
   def test_trilateral_sides_empty_list_default(self):
     self.assertIsInstance(self.trilateral.sides, list)
     self.assertEqual(self.trilateral.sides, [])
@@ -205,15 +202,14 @@ class TestCuboid(unittest.TestCase):
   def setUpClass(self):
     self.cube = Cube()
 
-  def test_cube_is_shape_and_has_rectangular(self):
-    self.assertIsInstance(self.cube, Shape)
+  def test_cube_base_is_rectangular(self):
     self.assertIsInstance(self.cube.base, Rectangular)
 
   def test_cube_depth_default_zero(self):
-    self.assertEqual(cube.depth, 0)
+    self.assertEqual(self.cube.depth, 0)
 
   def test_cube_volume_default_zero(self):
-    self.assertEqual(cube.volume, 0)
+    self.assertEqual(self.cube.volume, 0)
 
   def test_cube_base_inherits_rectangular_properties(self):
     self.assertIsInstance(self.cube.base.sides, list)
@@ -229,7 +225,7 @@ class TestCuboid(unittest.TestCase):
     cube = Cube()
     cube.set_dimensions(4)
     cube.calc_volume()
-    self.assertEqual(cube.volume, 48)
+    self.assertEqual(cube.volume, 64)
 
 
 if __name__ == '__main__':
