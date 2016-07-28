@@ -72,6 +72,9 @@ class TestTrilateral(unittest.TestCase):
   def test_trilateral_has_area_default_zero(self):
     self.assertEqual(self.trilateral.area, 0)
 
+  def test_trilateral_has_perimeter_default_zero(self):
+    self.assertEqual(self.trilateral.perimeter, 0)
+
   def test_trilateral_sides_empty_list_default(self):
     self.assertIsInstance(self.trilateral.sides, list)
     self.assertEqual(self.trilateral.sides, [])

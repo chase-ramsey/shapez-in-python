@@ -1,3 +1,6 @@
+import math
+from functools import reduce
+
 class Shape:
 
   def __init__(self):
@@ -33,7 +36,26 @@ class Circular(Shape):
 class Trilateral(Shape):
 
   def __init__(self):
-    pass
+    super().__init__()
+    self.sides = list()
+    self.perimeter = 0
+
+  def set_dimensions(self, s1, s2, s3):
+    self.sides.append(s1)
+    self.sides.append(s2)
+    self.sides.append(s3)
+    self.sides.sort()
+
+  def calc_perimeter(self):
+    self.perimeter = reduce(lambda x, y: x + y, self.sides)
+
+  def calc_area(self):
+    a, b, c = self.sides[0], self.sides[1], self.sides[2]
+    peri = reduce(lambda x, y: x + y, self.sides)
+    peri /= 2
+    area = math.sqrt(peri * (peri - a) * (peri - b) * (peri - c))
+    self.area = area
+
 
 class Rectangular(Shape):
 
