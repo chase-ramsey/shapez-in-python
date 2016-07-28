@@ -51,7 +51,7 @@ class TestCircular(unittest.TestCase):
     circle_shape.set_dimensions(5)
     self.assertEqual(circle_shape.radius, 5)
     self.assertEqual(circle_shape.diameter, 10)
-    self.assertEqual(circle_shape.circumference, 31.41)
+    self.assertEqual(circle_shape.circumference, 31.42)
 
   def test_calculate_area_circle(self):
     circle_shape = Circular()
@@ -71,6 +71,9 @@ class TestTrilateral(unittest.TestCase):
 
   def test_trilateral_has_area_default_zero(self):
     self.assertEqual(self.trilateral.area, 0)
+
+  def test_trilateral_has_perimeter_default_zero(self):
+    self.assertEqual(self.trilateral.perimeter, 0)
 
   def test_trilateral_sides_empty_list_default(self):
     self.assertIsInstance(self.trilateral.sides, list)
