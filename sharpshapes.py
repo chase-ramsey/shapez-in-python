@@ -72,10 +72,20 @@ class Rectangular(Shape):
   def calc_area(self):
     self.area = self.sides[0] * self.sides[1]
 
-class Cylinder(Circular):
+class Cylinder():
 
   def __init__(self):
-    pass
+    self.base = Circular()
+    self.height = 0
+    self.volume = 0
+
+  def set_dimensions(self, radius, height):
+    self.base.set_dimensions(radius)
+    self.base.calc_area()
+    self.height = height
+
+  def calc_volume(self):
+    self.volume = float(format(self.base.area * self.height, '.2f'))
 
 class Pyramid():
 

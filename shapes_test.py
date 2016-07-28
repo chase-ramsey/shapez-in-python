@@ -132,14 +132,11 @@ class TestCylinder(unittest.TestCase):
   def setUpClass(self):
     self.cylinder = Cylinder()
 
-  def test_cylinder_is_shape_and_has_circular(self):
-    self.assertIsInstance(self.cylinder, Shape)
+  def test_cylinder_base_is_circular(self):
     self.assertIsInstance(self.cylinder.base, Circular)
 
-  def test_cylinder_inherits_shape_properties(self):
-    self.assertEqual(self.cylinder.area, 0)
-
   def test_cylinder_base_inherits_circular_properties(self):
+    self.assertEqual(self.cylinder.base.area, 0)
     self.assertEqual(self.cylinder.base.radius, 0)
     self.assertEqual(self.cylinder.base.diameter, 0)
     self.assertEqual(self.cylinder.base.circumference, 0)
@@ -155,14 +152,14 @@ class TestCylinder(unittest.TestCase):
     cylinder.set_dimensions(5, 10)
     self.assertEqual(cylinder.base.radius, 5)
     self.assertEqual(cylinder.base.diameter, 10)
-    self.assertEqual(cylinder.base.circumference, 31.14)
+    self.assertEqual(cylinder.base.circumference, 31.42)
     self.assertEqual(cylinder.height, 10)
 
   def test_calculate_cylinder_volume(self):
     cylinder = Cylinder()
     cylinder.set_dimensions(5, 10)
     cylinder.calc_volume()
-    self.assertEqual(cylinder.volume, 785.38)
+    self.assertEqual(int(cylinder.volume), 785)
 
 
 class TestPyramid(unittest.TestCase):
@@ -196,7 +193,7 @@ class TestPyramid(unittest.TestCase):
     pyramid.calc_volume()
     self.assertEqual(pyramid.volume, 26.67)
 
-class TestCuboid(unittest.TestCase):
+class TestCube(unittest.TestCase):
 
   @classmethod
   def setUpClass(self):
