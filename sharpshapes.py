@@ -6,6 +6,7 @@ class Shape:
 class Circular(Shape):
 
   def __init__(self):
+    super().__init__()
     self.radius = 0
     self.diameter = 0
     self.circumference = 0
@@ -22,10 +23,12 @@ class Circular(Shape):
   def set_dimensions(self, radius):
     self.set_radius(radius)
     self.set_diameter(radius * 2)
-    self.set_circumference((radius * 2) * 3.1415)
+    circ = format((radius * 2) * 3.1415, '.2f')
+    self.set_circumference(float(circ))
 
   def calc_area(self):
-    self.area = float((format((self.radius * self.radius) * 3.1415), '.2f'))
+    area = format((self.radius * self.radius) * 3.1415, '.2f')
+    self.area = float(area)
 
 class Trilateral(Shape):
 

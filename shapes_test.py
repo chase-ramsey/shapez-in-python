@@ -51,7 +51,7 @@ class TestCircular(unittest.TestCase):
     circle_shape.set_dimensions(5)
     self.assertEqual(circle_shape.radius, 5)
     self.assertEqual(circle_shape.diameter, 10)
-    self.assertEqual(circle_shape.circumference, 31.41)
+    self.assertEqual(circle_shape.circumference, 31.42)
 
   def test_calculate_area_circle(self):
     circle_shape = Circular()
