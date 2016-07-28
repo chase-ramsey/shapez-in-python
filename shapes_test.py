@@ -115,7 +115,7 @@ class TestRectangular(unittest.TestCase):
   def test_rectangular_set_dimensions(self):
     rect = Rectangular()
     rect.set_dimensions(4, 4)
-    rect.sides = [4, 4]
+    self.assertEqual(rect.sides, [4, 4])
 
   def test_calculate_perimeter_rectangle(self):
     rect = Rectangular()
@@ -174,15 +174,14 @@ class TestPyramid(unittest.TestCase):
   def setUpClass(self):
     self.pyramid = Pyramid()
 
-  def test_pyramid_is_shape_and_has_rectangular(self):
-    self.assertIsInstance(self.pyramid, Shape)
+  def test_pyramid_base_has_rectangular(self):
     self.assertIsInstance(self.pyramid.base, Rectangular)
 
-  def test_cuboid_height_default_zero(self):
-    self.assertEqual(pyramid.height, 0)
+  def test_pyramid_height_default_zero(self):
+    self.assertEqual(self.pyramid.height, 0)
 
   def test_pyramid_volume_default_zero(self):
-    self.assertEqual(pyramid.volume, 0)
+    self.assertEqual(self.pyramid.volume, 0)
 
   def test_pyramid_base_inherits_rectangular_properties(self):
     self.assertIsInstance(self.pyramid.base.sides, list)
@@ -190,13 +189,13 @@ class TestPyramid(unittest.TestCase):
 
   def test_set_pyramid_dimensions(self):
     pyramid = Pyramid()
-    pyramid.set_dimensions(4, 5)
+    pyramid.set_dimensions(5, 4)
     self.assertEqual(pyramid.base.sides, [4, 4])
     self.assertEqual(pyramid.height, 5)
 
   def test_calculate_pyramid_volume(self):
     pyramid = Pyramid()
-    pyramid.set_dimensions(4, 5)
+    pyramid.set_dimensions(5, 4)
     pyramid.calc_volume()
     self.assertEqual(pyramid.volume, 26.67)
 
