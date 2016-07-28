@@ -72,9 +72,6 @@ class TestTrilateral(unittest.TestCase):
   def test_trilateral_has_area_default_zero(self):
     self.assertEqual(self.trilateral.area, 0)
 
-  def test_trilateral_has_perimeter_default_zero(self):
-    self.assertEqual(self.trilateral.perimeter, 0)
-
   def test_trilateral_sides_empty_list_default(self):
     self.assertIsInstance(self.trilateral.sides, list)
     self.assertEqual(self.trilateral.sides, [])
@@ -115,7 +112,7 @@ class TestRectangular(unittest.TestCase):
   def test_rectangular_set_dimensions(self):
     rect = Rectangular()
     rect.set_dimensions(4, 4)
-    rect.sides = [4, 4]
+    self.assertEqual(rect.sides, [4, 4])
 
   def test_calculate_perimeter_rectangle(self):
     rect = Rectangular()
@@ -135,14 +132,11 @@ class TestCylinder(unittest.TestCase):
   def setUpClass(self):
     self.cylinder = Cylinder()
 
-  def test_cylinder_is_shape_and_has_circular(self):
-    self.assertIsInstance(self.cylinder, Shape)
+  def test_cylinder_base_is_circular(self):
     self.assertIsInstance(self.cylinder.base, Circular)
 
-  def test_cylinder_inherits_shape_properties(self):
-    self.assertEqual(self.cylinder.area, 0)
-
   def test_cylinder_base_inherits_circular_properties(self):
+    self.assertEqual(self.cylinder.base.area, 0)
     self.assertEqual(self.cylinder.base.radius, 0)
     self.assertEqual(self.cylinder.base.diameter, 0)
     self.assertEqual(self.cylinder.base.circumference, 0)
@@ -158,14 +152,14 @@ class TestCylinder(unittest.TestCase):
     cylinder.set_dimensions(5, 10)
     self.assertEqual(cylinder.base.radius, 5)
     self.assertEqual(cylinder.base.diameter, 10)
-    self.assertEqual(cylinder.base.circumference, 31.14)
+    self.assertEqual(cylinder.base.circumference, 31.42)
     self.assertEqual(cylinder.height, 10)
 
   def test_calculate_cylinder_volume(self):
     cylinder = Cylinder()
     cylinder.set_dimensions(5, 10)
     cylinder.calc_volume()
-    self.assertEqual(cylinder.volume, 785.38)
+    self.assertEqual(int(cylinder.volume), 785)
 
 
 class TestPyramid(unittest.TestCase):
@@ -174,15 +168,14 @@ class TestPyramid(unittest.TestCase):
   def setUpClass(self):
     self.pyramid = Pyramid()
 
-  def test_pyramid_is_shape_and_has_rectangular(self):
-    self.assertIsInstance(self.pyramid, Shape)
+  def test_pyramid_base_has_rectangular(self):
     self.assertIsInstance(self.pyramid.base, Rectangular)
 
-  def test_cuboid_height_default_zero(self):
-    self.assertEqual(pyramid.height, 0)
+  def test_pyramid_height_default_zero(self):
+    self.assertEqual(self.pyramid.height, 0)
 
   def test_pyramid_volume_default_zero(self):
-    self.assertEqual(pyramid.volume, 0)
+    self.assertEqual(self.pyramid.volume, 0)
 
   def test_pyramid_base_inherits_rectangular_properties(self):
     self.assertIsInstance(self.pyramid.base.sides, list)
@@ -190,31 +183,30 @@ class TestPyramid(unittest.TestCase):
 
   def test_set_pyramid_dimensions(self):
     pyramid = Pyramid()
-    pyramid.set_dimensions(4, 5)
+    pyramid.set_dimensions(5, 4)
     self.assertEqual(pyramid.base.sides, [4, 4])
     self.assertEqual(pyramid.height, 5)
 
   def test_calculate_pyramid_volume(self):
     pyramid = Pyramid()
-    pyramid.set_dimensions(4, 5)
+    pyramid.set_dimensions(5, 4)
     pyramid.calc_volume()
     self.assertEqual(pyramid.volume, 26.67)
 
-class TestCuboid(unittest.TestCase):
+class TestCube(unittest.TestCase):
 
   @classmethod
   def setUpClass(self):
     self.cube = Cube()
 
-  def test_cube_is_shape_and_has_rectangular(self):
-    self.assertIsInstance(self.cube, Shape)
+  def test_cube_base_is_rectangular(self):
     self.assertIsInstance(self.cube.base, Rectangular)
 
   def test_cube_depth_default_zero(self):
-    self.assertEqual(cube.depth, 0)
+    self.assertEqual(self.cube.depth, 0)
 
   def test_cube_volume_default_zero(self):
-    self.assertEqual(cube.volume, 0)
+    self.assertEqual(self.cube.volume, 0)
 
   def test_cube_base_inherits_rectangular_properties(self):
     self.assertIsInstance(self.cube.base.sides, list)
@@ -230,7 +222,7 @@ class TestCuboid(unittest.TestCase):
     cube = Cube()
     cube.set_dimensions(4)
     cube.calc_volume()
-    self.assertEqual(cube.volume, 48)
+    self.assertEqual(cube.volume, 64)
 
 
 if __name__ == '__main__':
